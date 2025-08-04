@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chatbot</title>
+    <link rel="stylesheet" href="chatbot.css">
+</head>
+
+<body>
+  
+    <!-- Floating Chat Button -->
+    <button class="chat-btn" onclick="openChat()">💬 Chat with Us</button>
+    
+    <!-- Chatbot Box -->
+    <div class="chat-container" id="chatContainer">
+    <div class="chat-header">
+        <span>Ayushman Health Care Chatbot</span>
+        <button class="close-btn" onclick="closeChat()">✖</button>
+    </div>
+   
+    <div class="chat-body" id="chatBody">
+        <p class="bot-message">👋 Welcome! How can I assist you today?</p>
+    </div>
+
+    <!-- Suggested Questions -->     
+    <div class="suggested-questions" id="suggestedQuestions">
+    <p>💡 You can ask:</p>
+    <button onclick="sendSuggested('Can I get address?')">Can I get address?</button>
+    <button onclick="sendSuggested('Can I get contact number?')">Can I get contact number?</button>
+    <button onclick="sendSuggested('What all Ayurveda treatment I get?')">What all Ayurveda treatment I get?</button>
+    </div>
+
+   
+    <!-- <div class="chat-footer">
+        <input type="text" id="userInput" placeholder="Type your question..." onkeypress="handleKeyPress(event)">
+        <button onclick="sendMessage()">Send</button>
+    </div>    -->
+</div>
+
+
+<script src="chatbot.js"></script>
+
+</body>
+</html>
+   

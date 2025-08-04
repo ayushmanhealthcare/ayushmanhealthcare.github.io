@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ayushman Health Care - Home</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="panchakarma.css">
+  <link rel="stylesheet" href="chatbot.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+</head>
+
+<body>
+  <button class="chat-btn" onclick="openChat()">💬 Chat with Us</button>
+
+  <!-- Header Section -->
+  <div class="header">
+    <h1>Ayushman Health Care</h1>
+    <nav>
+      <a href="index.html" class="active">Home Page</a>
+      <a href="doctor.html">Know Your Doctor</a>
+    </nav>
+  </div>
+
+  <!-- Hero Section -->
+<div class="hospital-image">
+  <div class="hero-overlay">
+    <h2>Ayushman Health Care</h2>
+  </div>
+</div>
+
+
+  <!-- Address -->
+  <p class="address">
+    Address: RTO Circle, Opposite to KSRTC Depo, Shivaji Nagar, Belagavi, Karnataka 590016
+  </p>
+
+  <!-- Quote -->
+  <blockquote class="quote">
+    "स्वास्थ्यं परमं भाग्यं, स्वास्थ्यं सर्वार्थसाधनम्" <br>
+    (Health is the greatest wealth and means to all accomplishments.)
+  </blockquote>
+
+  <!-- Panchakarma Treatments -->
+  <header class="panchakarma-header">
+    <h1>Panchakarma Treatments</h1>
+    <div class="gallery">
+      <img src="panchakarma1.jpg" alt="Panchakarma Treatment">
+      <img src="panchakarma2.jpg" alt="Benefits of Panchakarma">
+    </div>
+
+  <!-- Existing Treatment Section -->
+  <h3>Our Treatments</h3>
+  <div class="treatments">
+    <div class="disease" onclick="showImage('ivdp.png', this)">
+      IVDP - Intervertebral Disc Prolapse  
+      <br><span class="more-info">To know more, consult the doctor.</span>
+    </div>
+    <div class="disease" onclick="showImage('back_pain.jpg', this)">
+      Back Pain - Chronic & Acute Pain Management  
+      <br><span class="more-info">To know more, consult the doctor.</span>
+    </div>
+    <div class="disease" onclick="showImage('osteoarthritis.jpg', this)">
+      Osteoarthritis - Joint Pain & Mobility Issues  
+      <br><span class="more-info">To know more, consult the doctor.</span>
+    </div>
+    <div class="disease" onclick="showImage('acidity.jpg', this)">
+      Acidity - Digestive Disorder  
+      <br><span class="more-info">To know more, consult the doctor.</span>
+    </div>
+    <div class="disease" onclick="showImage('headache.jpg', this)">
+      Headache - Migraine & Stress-related Issues  
+      <br><span class="more-info">To know more, consult the doctor.</span>
+    </div>
+    <div class="disease" onclick="showImage('jaundice.jpg', this)">
+      Jaundice - Liver Detox & Ayurvedic Cure  
+      <br><span class="more-info">To know more, consult the doctor.</span>
+    </div>
+  </div>
+
+  <!-- Contact Section -->
+  <h3>Contact Us</h3>
+  <div class="contact">
+    <p><i class="fa fa-clock-o"></i> Clinic Timings: Mon - Sat (9 AM - 9 PM)</p>
+    <p><i class="fa fa-phone"></i> Contact Number: +91 99864 35750</p>
+    <a href="https://wa.me/+919986435750" target="_blank"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+    <a href="https://www.instagram.com/ayushman_health_care__?igsh=MXhrNTg2MDY0Y3drcw==" target="_blank"><i class="fab fa-instagram"></i> Instagram</a>
+    <a href="https://www.google.com/maps/place/Dr+Sagars+Ayushman+health+care/@15.8660419,74.5199184,17z/data=!4m6!3m5!1s0x3bbf677fa361dfbd:0xecb198b72abbbdf2!8m2!3d15.8660419!4d74.5199184!16s%2Fg%2F11kr82v6jn?entry=ttu&g_ep=EgoyMDI1MDEyMC4wIKXMDSoASAFQAw%3D%3D" target="_blank">Location</a>
+  </div>
+
+  <!-- Chatbot Box -->
+  <div class="chat-container" id="chatContainer">
+    <div class="chat-header">
+      <span>Ayushman Health Care Chatbot</span>
+      <button class="close-btn" onclick="closeChat()">✖</button>
+    </div>
+
+    <div class="chat-body" id="chatBody">
+      <p class="bot-message">👋 Welcome! How can I assist you today?</p>
+    </div>
+
+    <div class="suggested-questions" id="suggestedQuestions">
+      <p>💡 You can ask:</p>
+      <button onclick="sendSuggested('Can I get address?')">Can I get address?</button>
+      <button onclick="sendSuggested('Can I get contact number?')">Can I get contact number?</button>
+      <button onclick="sendSuggested('What all Ayurveda treatment I get?')">What all Ayurveda treatment I get?</button>
+    </div>
+  </div>
+
+  <script src="chatbot.js"></script>
+</body>
+</html>
+
