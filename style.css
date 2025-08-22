@@ -419,3 +419,11 @@ body {
 .suggested-questions button:hover {
   background-color: #b2ebf2;
 }
+
+body {
+  padding-bottom: 80px; /* adjust height same as button */
+}
+
+#contact {
+  margin-bottom: 80px; /* equal to button height */
+}
