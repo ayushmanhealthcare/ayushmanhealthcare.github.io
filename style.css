@@ -219,13 +219,16 @@ body {
   background-color: #2980b9;
 }
 
-/* Doctor Image */
 .doctor-image {
   display: block;
-  max-width: 200px;
+  width: 200px;           /* Fixed width */
+  height: 200px;          /* Fixed height */
   margin: 20px auto;
-  border-radius: 50%;
+  border-radius: 50%;     /* Makes it circular */
+  object-fit: cover;      /* Ensures image fills circle */
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2); /* Optional: nice shadow */
 }
+
 
 /* Responsive */
 @media (max-width: 768px) {
@@ -427,3 +430,4 @@ body {
 #contact {
   margin-bottom: 80px; /* equal to button height */
 }
+
