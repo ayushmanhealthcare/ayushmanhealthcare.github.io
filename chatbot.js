@@ -1,68 +1,68 @@
-function openChat() {
-  document.getElementById("chatContainer").style.display = "block";
-  showSuggestedQuestions();
-}
-
-function closeChat() {
-  document.getElementById("chatContainer").style.display = "none";
-}
-
-function showSuggestedQuestions() {
-  document.getElementById("suggestedQuestions").style.display = "flex";
-}
-
-function sendSuggested(question) {
+document.addEventListener("DOMContentLoaded", () => {
+  const chatContainer = document.getElementById("chatContainer");
+  const openBtn = document.getElementById("chatOpenBtn");
+  const closeBtn = document.getElementById("chatCloseBtn");
   const chatBody = document.getElementById("chatBody");
+  const suggestedButtons = document.querySelectorAll("#suggestedQuestions button");
 
-  const userMessage = document.createElement("div");
-  userMessage.className = "user-message";
-  userMessage.textContent = question;
-  chatBody.appendChild(userMessage);
+  // Responses dictionary
+  const responses = {
+    "address": "🏥 Clinic Address: RTO Circle, Opposite to KSRTC Depo, Shivaji Nagar, Belagavi, Karnataka 590016.",
+    "contact": "📞 Contact Number: +91 9986435750.",
+    "treatment": "🌿 We offer Panchakarma, Abhyanga, Vamana, Virechana, Sneha Basti, Janu Basti, Greeva Basti, Kati Basti, Nasya, Swarna Prashana, Rasayana & Rejuvenation Therapy"
+  };
 
-  const botMessage = document.createElement("div");
-  botMessage.className = "bot-message";
+  // Open chat
+  openBtn.addEventListener("click", () => {
+    chatContainer.classList.add("show");
+  });
 
-  if (question.includes("address")) {
-    botMessage.textContent = "🏥 Clinic Address: RTO Circle, Opposite to KSRTC Depo, Shivaji Nagar, Belagavi, Karnataka 590016.";
-  } else if (question.includes("contact")) {
-    botMessage.textContent = "📞 Contact Number: +91 9986435750.";
-  } else if (question.includes("treatment")) {
-    botMessage.textContent = "🌿 We offer Panchakarma, Abhyanga, Vamana, Virechana, Sneha Basti, Janu Basti, Greeva Basti, Kati Basti, Nasya, Swarna Prashana, Rasayana & Rejuvenation Therapy";
-  } else {
-    botMessage.textContent = "🤖 I'm not sure how to answer that yet.";
-  }
+  // Close chat
+  closeBtn.addEventListener("click", () => {
+    chatContainer.classList.remove("show");
+  });
 
-  chatBody.appendChild(botMessage);
-  chatBody.scrollTop = chatBody.scrollHeight;
+  // Handle suggested question click
+  suggestedButtons.forEach(button => {
+    button.addEventListener("click", () => {
+      const question = button.dataset.question;
 
-  showSuggestedQuestions(); // Show bubbles again
-}
+      // User message
+      const userMessage = document.createElement("div");
+      userMessage.className = "user-message";
+      userMessage.textContent = question;
+      chatBody.appendChild(userMessage);
 
-function handleKeyPress(event) {
-  if (event.key === "Enter") {
-    sendMessage();
-  }
-}
+      // Bot response
+      const botMessage = document.createElement("div");
+      botMessage.className = "bot-message";
 
-function sendMessage() {
-  const userInput = document.getElementById("userInput");
-  const question = userInput.value.trim();
-  if (question === "") return;
+      const lowerQ = question.toLowerCase();
+      let reply = "🤖 I'm not sure how to answer that yet.";
 
-  sendSuggested(question);
-  userInput.value = "";
-}
+      for (const key in responses) {
+        if (lowerQ.includes(key)) {
+          reply = responses[key];
+          break;
+        }
+      }
 
-// Close chatbot when clicking outside (optional UX polish)
-window.addEventListener('click', function (e) {
-  const chatBox = document.getElementById('chatContainer');
-  const chatButton = document.querySelector('.chat-btn');
+      botMessage.textContent = reply;
+      chatBody.appendChild(botMessage);
 
-  if (
-    chatBox.style.display === 'block' &&
-    !chatBox.contains(e.target) &&
-    !chatButton.contains(e.target)
-  ) {
-    closeChat();
-  }
+      // Auto-scroll
+      chatBody.scrollTop = chatBody.scrollHeight;
+    });
+  });
+
+  // Close chatbot when clicking outside
+  window.addEventListener("click", function (e) {
+    if (
+      chatContainer.classList.contains("show") &&
+      !chatContainer.contains(e.target) &&
+      !openBtn.contains(e.target)
+    ) {
+      chatContainer.classList.remove("show");
+    }
+  });
 });

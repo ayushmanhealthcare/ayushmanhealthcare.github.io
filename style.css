@@ -431,3 +431,10 @@ body {
   margin-bottom: 80px; /* equal to button height */
 }
 
+nav ul {
+  list-style: none;   /* Removes the dots */
+  margin: 0;          /* Removes extra space */
+  padding: 0;         /* Removes left indentation */
+  display: flex;      /* Keeps menu items side by side */
+  gap: 20px;          /* Adds spacing between items */
+}
