@@ -438,3 +438,9 @@ nav ul {
   display: flex;      /* Keeps menu items side by side */
   gap: 20px;          /* Adds spacing between items */
 }
+
+.nav-list a.active {
+  font-weight: bold;
+  color: #007bff; /* highlight color */
+  border-bottom: 2px solid #007bff;
+}

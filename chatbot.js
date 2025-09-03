@@ -22,38 +22,55 @@ document.addEventListener("DOMContentLoaded", () => {
     chatContainer.classList.remove("show");
   });
 
-  // Handle suggested question click
+  // Handle suggested question clicks
   suggestedButtons.forEach(button => {
     button.addEventListener("click", () => {
-      const question = button.dataset.question;
+      // Remove highlight from all
+      suggestedButtons.forEach(b => b.classList.remove("active-question"));
+      // Highlight the clicked one
+      button.classList.add("active-question");
 
-      // User message
-      const userMessage = document.createElement("div");
-      userMessage.className = "user-message";
-      userMessage.textContent = question;
-      chatBody.appendChild(userMessage);
-
-      // Bot response
-      const botMessage = document.createElement("div");
-      botMessage.className = "bot-message";
-
-      const lowerQ = question.toLowerCase();
-      let reply = "🤖 I'm not sure how to answer that yet.";
-
-      for (const key in responses) {
-        if (lowerQ.includes(key)) {
-          reply = responses[key];
-          break;
-        }
-      }
-
-      botMessage.textContent = reply;
-      chatBody.appendChild(botMessage);
-
-      // Auto-scroll
-      chatBody.scrollTop = chatBody.scrollHeight;
+      handleUserMessage(button.dataset.question);
     });
   });
+
+  // Handle sending user message + bot reply
+  function handleUserMessage(question) {
+    // Add user message
+    const userMessage = document.createElement("div");
+    userMessage.className = "user-message";
+    userMessage.textContent = question;
+    chatBody.appendChild(userMessage);
+    chatBody.scrollTop = chatBody.scrollHeight;
+
+    // Typing indicator
+    const typingEl = document.createElement("div");
+    typingEl.className = "bot-message typing-indicator";
+    typingEl.textContent = "💬 Typing...";
+    chatBody.appendChild(typingEl);
+    chatBody.scrollTop = chatBody.scrollHeight;
+
+    // Find reply
+    const lowerQ = question.toLowerCase();
+    let reply = "🤖 I'm not sure how to answer that yet.";
+    for (const key in responses) {
+      if (lowerQ.includes(key)) {
+        reply = responses[key];
+        break;
+      }
+    }
+
+    // Delay bot reply
+    setTimeout(() => {
+      typingEl.remove();
+
+      const botMessage = document.createElement("div");
+      botMessage.className = "bot-message";
+      botMessage.textContent = reply;
+      chatBody.appendChild(botMessage);
+      chatBody.scrollTop = chatBody.scrollHeight;
+    }, 1000); // 1s delay
+  }
 
   // Close chatbot when clicking outside
   window.addEventListener("click", function (e) {
