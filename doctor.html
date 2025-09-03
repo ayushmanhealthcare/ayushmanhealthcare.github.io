@@ -14,6 +14,8 @@
 
   <!-- Styles -->
   <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="chatbot.css">
+
 
 </head>
 <body>
@@ -66,6 +68,30 @@
       </article>
     </section>
   </main>
+
+<!-- Floating Chat Button -->
+<button class="chat-btn" id="chatOpenBtn">💬 Chat with Us</button>
+
+<!-- Chatbot Box -->
+<div class="chat-container" id="chatContainer" hidden>
+  <div class="chat-header">
+    <span>Ayushman Health Care Chatbot</span>
+    <button class="close-btn" id="chatCloseBtn" aria-label="Close chat">✖</button>
+  </div>
+  
+  <div class="chat-body" id="chatBody">
+    <p class="bot-message">👋 Welcome! How can I assist you today?</p>
+  </div>
+
+  <div class="suggested-questions" id="suggestedQuestions">
+    <p>💡 You can ask:</p>
+    <button type="button" data-question="Can I get address?">Can I get address?</button>
+    <button type="button" data-question="Can I get contact number?">Can I get contact number?</button>
+    <button type="button" data-question="What all Ayurveda treatment I get?">What all Ayurveda treatment I get?</button>
+  </div>
+</div>
+
+<script src="chatbot.js" defer></script>
 
 </body>
 </html>
