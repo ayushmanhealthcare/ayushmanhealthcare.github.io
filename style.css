@@ -1,10 +1,15 @@
 /* General Styling */
 body {
-  font-family: Arial, sans-serif;
+  font-family: 'Roboto', sans-serif;
   margin: 0;
   padding: 0;
   background-color: #f8f9fa;
   color: #343a40;
+}
+
+/* Headings use Poppins */
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Poppins', sans-serif;
 }
 
 /* Header */
@@ -142,6 +147,12 @@ body {
   grid-template-columns: repeat(3, 1fr);
   gap: 20px;
   padding: 20px;
+  justify-items: center;   /* ⬅️ centers each treatment card */
+  text-align: center;      /* ⬅️ text inside cards also centered */
+}
+
+.panchakarma h3 {
+  text-align: center;      /* centers the “Our Treatments” heading */
 }
 
 /* .disease {
@@ -185,6 +196,19 @@ body {
   text-decoration: none;
   border-radius: 5px;
 } */
+
+.contact {
+  text-align: center;   /* centers all content inside contact section */
+}
+
+.contact h2 {
+  text-align: center;   /* centers the “Contact Us” heading */
+}
+
+.contact {
+  text-align: center;   /* ⬅️ centers all content inside */
+}
+
 /* CTA (Call-to-Action) Buttons in Contact Section */
 .contact a {
   display: inline-block;
@@ -443,4 +467,80 @@ nav ul {
   font-weight: bold;
   color: #007bff; /* highlight color */
   border-bottom: 2px solid #007bff;
+}
+
+/* Mobile responsive: stack treatments in one column */
+@media (max-width: 768px) {
+  .treatments {
+    grid-template-columns: 1fr;  /* single column on mobile */
+  }
+}
+
+/* Doctors Section */
+.doctors {
+  text-align: center;
+  padding: 40px 20px;
+  background-color: #f9f9f9;
+}
+
+.doctors h2 {
+  font-size: 2em;
+  margin-bottom: 30px;
+  color: #2c3e50;
+}
+
+.doctors-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.doctor-card {
+  background: #ffffff;
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  text-align: center;
+  transition: transform 0.2s ease;
+}
+
+.doctor-card:hover {
+  transform: translateY(-5px);
+}
+
+.doctor-card h3 {
+  margin-top: 15px;
+  margin-bottom: 10px;
+  font-size: 1.3em;
+  color: #34495e;
+}
+
+.doctor-card p {
+  font-size: 0.95em;
+  color: #555;
+  line-height: 1.5;
+}
+
+.doctor-card img.doctor-image {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  object-fit: cover;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+  margin-bottom: 10px;
+}
+
+/* Link to doctors page */
+.see-more {
+  display: inline-block;
+  margin-top: 20px;
+  font-weight: bold;
+  color: #007bff;
+  text-decoration: none;
+}
+
+.see-more:hover {
+  text-decoration: underline;
 }
